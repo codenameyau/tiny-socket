@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Stringify } from './core/Containers';
+import { Container, Stringify } from '../core/Containers';
 
 const ColoredContainer = Container.extend`
 	background-color: ${({ color }) => color };
