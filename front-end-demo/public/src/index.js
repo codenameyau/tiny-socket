@@ -3,9 +3,9 @@
 window.WebSocket = window.WebSocket || window.MozWebSocket;
 
 const OWLETTE_COLORS = 'wss://owlette.herokuapp.com/colors';
-const OWLETTE_TWEETS = 'wss://owlette.herokuapp.com/tweets/MJ';
-const OWLETTE_TICKER = 'wss://owlette.herokuapp.com/ticker';
-const SOCKET_CONNECTION = OWLETTE_COLORS;
+const OWLETTE_TWEETS = 'wss://owlette.herokuapp.com/tweets/FAKE';
+const OWLETTE_TICKER = 'wss://owlette.herokuapp.com/ticker/FAKE';
+const SOCKET_CONNECTION = OWLETTE_TICKER;
 
 var connection = new WebSocket(SOCKET_CONNECTION);
 
