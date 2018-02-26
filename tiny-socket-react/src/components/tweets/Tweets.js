@@ -56,15 +56,22 @@ const HashTagTweet = (props) => {
   )
 
   const renderMention = (word) => (
-    <TweetLink href={`https://twitter.com/${word.slice(1)}`} target="_blank">
+    <TweetLink href={`https://twitter.com/${word.replace(':', '').slice(1)}`} target="_blank">
       {word}
     </TweetLink>
   );
+
+  const renderHyperLink = (word) => (
+    <TweetLink href={word} target="_blank">
+      {word}
+    </TweetLink>
+  )
 
   const wordsToLink = words.map((word) => {
     return (
       word.indexOf('#') === 0 ? { text: word, type: 'hashtag' } :
       word.indexOf('@') === 0 ? { text: word, type: 'mention' } :
+      word.indexOf('http') === 0 ? { text: word, type: 'hyperlink' } :
       { text: word, type: null }
     )
   });
@@ -76,6 +83,7 @@ const HashTagTweet = (props) => {
           return (
             word.type === 'hashtag' ? renderHashTag(wordText) :
             word.type === 'mention' ? renderMention(wordText) :
+            word.type === 'hyperlink' ? renderHyperLink(wordText) :
             <span>{wordText}</span>
           )
         }) }
