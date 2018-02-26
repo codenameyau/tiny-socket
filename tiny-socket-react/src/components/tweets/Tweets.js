@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const EmptyTweets = styled.div`
-  max-width: 40em;
-  margin: 3em auto 2em;
+  max-width: 45em;
+  margin: 3em auto;
   text-align: center;
 `;
 
 const TweetList = styled.div`
-  max-width: 40em;
-  margin: 3em auto 2em;
+  max-width: 45em;
+  margin: 3em auto;
   border: 1px solid #eee;
   -webkit-box-shadow: 2px 16px 92px 2px rgba(224,217,224,0.95);
   -moz-box-shadow: 2px 16px 92px 2px rgba(224,217,224,0.95);
@@ -17,14 +17,14 @@ const TweetList = styled.div`
 `;
 
 const TweetItem = styled.div`
-  min-height: 1.5em;
-  padding: 1.5em;
+  min-height: 1.75em;
+  padding: 1.75em;
   background: #fff;
   font-family: monospace;
   color: #333;
 
   &:not(:last-child) {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e5e5e5;
   }
 `;
 
@@ -37,7 +37,7 @@ class Tweets extends React.Component {
 
     this.state = {
       ready: false,
-      tweets: [{ "tweet": "#IoT &amp; #BigData Trends in #Finance: 5 Significant Shifts [2018] https://t.co/uIN9eFhV21 by @RedPixie", "followers": 1710, "retweets": 0 }, { "tweet": "Why Charging Your Electric Car at Night Could Save the World - #Bloomberg #investorseurope #finance #news #tax… https://t.co/suhgNWRfoL", "followers": 814, "retweets": 0 }]
+      tweets: [{ "tweet": "The States With The Most Gun Laws See The Fewest Gun-Related Deaths https://t.co/Oq5NDSiR3p #Investing", "followers": 460, "retweets": 0 }, { "tweet": "Crisis: Poverty Pay, Food Stamps At American Airlines https://t.co/2ta2xG9P0N #Investing", "followers": 460, "retweets": 0 }, { "tweet": "#IoT &amp; #BigData Trends in #Finance: 5 Significant Shifts [2018] https://t.co/uIN9eFhV21 by @RedPixie", "followers": 1710, "retweets": 0 }, { "tweet": "Why Charging Your Electric Car at Night Could Save the World - #Bloomberg #investorseurope #finance #news #tax… https://t.co/suhgNWRfoL", "followers": 814, "retweets": 0 }]
     }
   }
   componentWillMount() {
@@ -56,7 +56,7 @@ class Tweets extends React.Component {
     	const data = JSON.parse(message.data);
 
     	data.tweet && this.setState({
-    		tweets: [data, ...this.state.tweets]
+    		tweets: [data, ...this.state.tweets].slice(0, 100)
     	});
     };
   }

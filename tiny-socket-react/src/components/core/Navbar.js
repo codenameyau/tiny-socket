@@ -9,7 +9,7 @@ const NavbarContainer = styled.nav`
 	background-image: -webkit-linear-gradient(left, #6936ce, #5779d7);
 	background-image: -o-linear-gradient(left, #6936ce, #5779d7);
 	background-image: linear-gradient(90deg, #6936ce, #5779d7);
-  padding: 1em;
+  padding: 1.25em;
 `;
 
 const NavItem = styled(NavLink)`
