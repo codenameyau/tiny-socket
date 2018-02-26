@@ -50,8 +50,10 @@ class Tweets extends React.Component {
 
     this.state = {
       ready: false,
-      tweets: [{ "tweet": "Crisis: Poverty Pay, Food Stamps At American Airlines https://t.co/2ta2xG9P0N #Investing", "followers": 460, "retweets": 0 }, { "tweet": "Why Charging Your Electric Car at Night Could Save the World - #Bloomberg #investorseurope #finance #news #tax… https://t.co/suhgNWRfoL", "followers": 814, "retweets": 0 }].reverse()
+      tweets: [{ "tweet": "Zacks: Analysts Anticipate AxoGen, Inc. $AXGN Will Announce Quarterly Sales of $16.09 Million https://t.co/P5skBF05JC #investing", "followers": 227, "retweets": 0, "timestamp": 10851.435, "messageId": 5 }, { "tweet": "Harju Elekter Report  #Estonia #CorporateResearch #CFOs #Diversification", "followers": 1230, "retweets": 0, "timestamp": 10797.005000000001, "messageId": 4 }, { "tweet": "Vodafone Partners With Samsung Electronics To Launch Smart Home Services - Nasdaq https://t.co/u2Zm7iKi17 #IoT", "followers": 8257, "retweets": 0, "timestamp": 4389.445000000001, "messageId": 3 }, { "tweet": "RT fintraksoftware: Banking + Fintech Conference in #NewYork \n#banking #fintech #innovation #technology #innovation… https://t.co/Lf6EL4uROz", "followers": 20126, "retweets": 0, "timestamp": 2907.92, "messageId": 2 }, { "tweet": "IM and its Affiliates acted as a financial advisor for Energy King, Inc.Acquisition Funding $5,000,000… https://t.co/hdk7nR6dMj", "followers": 2563, "retweets": 0, "timestamp": 941.5700000000002, "messageId": 1 }]
     }
+
+    this.messageId = this.state.tweets.length; // since stream doesn't have id.
   }
   componentWillMount() {
     this.socket = new WebSocket(this.socketDestination);
@@ -65,12 +67,19 @@ class Tweets extends React.Component {
     };
 
     this.socket.onmessage = (message) => {
-    	console.log(message);
-    	const data = JSON.parse(message.data);
+    	const data = {
+        ...JSON.parse(message.data),
+        timestamp: message.timeStamp,
+        messageId: this.messageId
+      };
+
+      console.log(data);
 
     	data.tweet && this.setState({
     		tweets: [data, ...this.state.tweets].slice(0, 100)
-    	});
+      });
+
+      this.messageId += 1;
     };
   }
 
@@ -84,8 +93,8 @@ class Tweets extends React.Component {
     )
 
     const renderTweets = () => {
-      return tweets.map((tweet, index) => (
-        <Fade key={index}>
+      return tweets.map((tweet) => (
+        <Fade key={tweet.messageId}>
           <TweetItem>
             <TweetIcon>
               <img width="20" src={TwitterIcon} alt="Twitter bird" />
