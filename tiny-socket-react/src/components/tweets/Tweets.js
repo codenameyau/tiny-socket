@@ -94,7 +94,7 @@ class Tweets extends React.Component {
 
     const renderTweets = () => {
       return tweets.map((tweet) => (
-        <Fade key={tweet.messageId}>
+        <Fade key={tweet.messageId} duration={1000}>
           <TweetItem>
             <TweetIcon>
               <img width="20" src={TwitterIcon} alt="Twitter bird" />
