@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from '../core/Containers';
 
 class Tweets extends React.Component {
   constructor(props) {
