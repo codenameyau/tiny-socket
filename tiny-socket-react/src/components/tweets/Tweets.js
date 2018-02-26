@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import TwitterIcon from '../icons/twitter.svg';
 
 const EmptyTweets = styled.div`
   max-width: 45em;
@@ -22,10 +23,20 @@ const TweetItem = styled.div`
   background: #fff;
   font-family: monospace;
   color: #333;
+  display: flex;
+  align-items: center;
 
   &:not(:last-child) {
     border-bottom: 1px solid #e5e5e5;
   }
+`;
+
+const TweetIcon = styled.div`
+  min-width: 3em;
+`;
+
+const TweetText = styled.div`
+  flex-grow: 1;
 `;
 
 class Tweets extends React.Component {
@@ -64,8 +75,6 @@ class Tweets extends React.Component {
   render() {
     const { tweets } = this.state;
 
-    console.log(tweets)
-
     const renderNoTweet = () => {
       return (
         <EmptyTweets>
@@ -78,7 +87,12 @@ class Tweets extends React.Component {
       return tweets.map((tweet, index) => {
         return (
           <TweetItem key={index}>
-            {tweet.tweet}
+            <TweetIcon>
+              <img width="20" src={TwitterIcon} />
+            </TweetIcon>
+            <TweetText>
+              {tweet.tweet}
+            </TweetText>
           </TweetItem>
         )
       })
