@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import store from './store';
 import Navbar from './components/core/Navbar';
 import Colors from './components/colors/Colors';
 import Tweets from './components/tweets/Tweets';
-import store from './store';
+import Tickers from './components/tickers/Tickers';
 
 import './App.css';
 
@@ -16,9 +17,10 @@ const PrimaryLayout = () => {
         <Navbar />
       </header>
       <main>
-        <Route path="/" exact component={Colors} />
+        <Route path="/" exact component={Tweets} />
         <Route path="/tweets" exact component={Tweets} />
-        <Route path="/tickers" exact component={Tweets} />
+        <Route path="/colors" exact component={Colors} />
+        <Route path="/tickers" exact component={Tickers} />
       </main>
     </div>
   )

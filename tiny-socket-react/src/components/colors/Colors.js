@@ -1,11 +1,18 @@
-import React, { Component } from 'react';
-import { Container, Stringify } from '../core/Containers';
+import React from 'react';
+import styled from 'styled-components';
+import { Stringify } from '../core/Utils';
 
-const ColoredContainer = Container.extend`
+export const Container = styled.div`
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5em;
+	font-family: monospace;
 	background-color: ${({ color }) => color };
 `;
 
-class Colors extends Component {
+class Colors extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -38,9 +45,9 @@ class Colors extends Component {
 		const { data } = this.state;
 
 		return (
-			<ColoredContainer color={data.color} >
+			<Container color={data.color} >
 				<Stringify>{data}</Stringify>
-			</ColoredContainer>
+			</Container>
     );
   }
 }
