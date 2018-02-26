@@ -4,20 +4,22 @@ import { NavLink } from 'react-router-dom';
 
 const NavbarContainer = styled.nav`
   text-align: center;
-  background: linear-gradient(28deg, #472086, #4a228a);
+	background-color: #6338aa;
+	background-image: -webkit-gradient(linear, left top, right top, from(#6936ce), to(#5779d7));
+	background-image: -webkit-linear-gradient(left, #6936ce, #5779d7);
+	background-image: -o-linear-gradient(left, #6936ce, #5779d7);
+	background-image: linear-gradient(90deg, #6936ce, #5779d7);
   padding: 1em;
 `;
 
 const NavItem = styled(NavLink)`
-  color: #888;
+  color: #ccc;
   transition: color .2s;
   margin: 0 1em;
   text-decoration: none;
   font-family: monospace;
   font-weight: lighter;
-  font-size: 1em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.25em;
 
   &:hover {
     color: #fff;

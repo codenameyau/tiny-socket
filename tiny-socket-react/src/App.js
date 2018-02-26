@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import styled from 'styled-components';
 
 import store from './store';
 import Navbar from './components/core/Navbar';
@@ -10,9 +11,12 @@ import Tickers from './components/tickers/Tickers';
 
 import './App.css';
 
+const AppContainer = styled.div`
+`;
+
 const PrimaryLayout = () => {
   return (
-    <div>
+    <AppContainer>
       <header>
         <Navbar />
       </header>
@@ -22,7 +26,7 @@ const PrimaryLayout = () => {
         <Route path="/colors" exact component={Colors} />
         <Route path="/tickers" exact component={Tickers} />
       </main>
-    </div>
+    </AppContainer>
   )
 };
 
