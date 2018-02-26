@@ -35,7 +35,6 @@ export const Navbar = (props) => {
     <NavbarContainer>
       <NavItem to="/tweets">Tweets</NavItem>
       <NavItem to="/tickers">Tickers</NavItem>
-      <NavItem to="/colors">Colors</NavItem>
     </NavbarContainer>
   );
 }

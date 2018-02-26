@@ -5,13 +5,13 @@ import { Fade } from '../core/Transitions';
 import TwitterIcon from '../icons/twitter.svg';
 
 const EmptyTweets = styled.div`
-  max-width: 45em;
+  max-width: 42em;
   margin: 3em auto;
   text-align: center;
 `;
 
 const TweetList = styled.div`
-  max-width: 45em;
+  max-width: 42em;
   margin: 3em auto;
   border: 1px solid #eee;
   -webkit-box-shadow: 2px 16px 92px 2px rgba(224,217,224,0.95);
@@ -40,6 +40,48 @@ const TweetIcon = styled.div`
 const TweetText = styled.div`
   flex-grow: 1;
 `;
+
+const TweetLink = styled.a`
+  text-decoration: none;
+  color: #1da1f2;
+`;
+
+const HashTagTweet = (props) => {
+  const words = props.children.split(' ');
+
+  const renderHashTag = (word) => (
+    <TweetLink href={`https://twitter.com/search?q=${word.slice(1)}`} target="_blank">
+      {word}
+    </TweetLink>
+  )
+
+  const renderMention = (word) => (
+    <TweetLink href={`https://twitter.com/${word.slice(1)}`} target="_blank">
+      {word}
+    </TweetLink>
+  );
+
+  const wordsToLink = words.map((word) => {
+    return (
+      word.indexOf('#') === 0 ? { text: word, type: 'hashtag' } :
+      word.indexOf('@') === 0 ? { text: word, type: 'mention' } :
+      { text: word, type: null }
+    )
+  });
+
+  return (
+    <TweetText>
+      { wordsToLink.map((word, index) => {
+          const wordText = word.text + ' ';
+          return (
+            word.type === 'hashtag' ? renderHashTag(wordText) :
+            word.type === 'mention' ? renderMention(wordText) :
+            <span>{wordText}</span>
+          )
+        }) }
+    </TweetText>
+  )
+};
 
 class Tweets extends React.Component {
   constructor(props) {
@@ -99,9 +141,9 @@ class Tweets extends React.Component {
             <TweetIcon>
               <img width="20" src={TwitterIcon} alt="Twitter bird" />
             </TweetIcon>
-            <TweetText>
+            <HashTagTweet>
               {tweet.tweet}
-            </TweetText>
+            </HashTagTweet>
           </TweetItem>
         </Fade>
       ))
