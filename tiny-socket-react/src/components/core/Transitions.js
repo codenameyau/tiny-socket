@@ -1,13 +1,15 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 
-const CSSTransitionFactory = (Transition, transitionName, {children, ...props}) => {
-  return (
-    <Transition classNames={transitionName} {...props} timeout={props.timeout || 0}>
-      {children}
-    </Transition>
-  );
+const CSSTransitionFactory = (Transition, transitionName) => {
+  return ({children, ...props}) => {
+    return (
+      <Transition classNames={transitionName} {...props} timeout={props.timeout || 0}>
+        {children}
+      </Transition>
+    )
+  }
 };
 
 const FadeCSSTransition = styled(CSSTransition)`
@@ -18,8 +20,8 @@ const FadeCSSTransition = styled(CSSTransition)`
   }
 
   &.fade-enter-active {
-  }
     opacity: 1;
+  }
 `;
 
-export const Fade = (props) => CSSTransitionFactory(FadeCSSTransition, 'fade', props);
+export const Fade = CSSTransitionFactory(FadeCSSTransition, 'fade');
