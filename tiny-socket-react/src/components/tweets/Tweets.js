@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Stringify } from '../core/Containers';
+import { Container } from '../core/Containers';
 
 class Tweets extends Component {
 	constructor(props) {
@@ -34,9 +34,9 @@ class Tweets extends Component {
 		const { data } = this.state;
 
 		return (
-			<Container color={data.color} >
-				<Stringify>{data}</Stringify>
-			</Container>
+			<div>
+				Tweets
+			</div>
     );
   }
 }

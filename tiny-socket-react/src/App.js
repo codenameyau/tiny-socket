@@ -18,6 +18,7 @@ const PrimaryLayout = () => {
       <main>
         <Route path="/" exact component={Colors} />
         <Route path="/tweets" exact component={Tweets} />
+        <Route path="/tickers" exact component={Tweets} />
       </main>
     </div>
   )
