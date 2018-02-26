@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TransitionGroup } from 'react-transition-group';
+import { Fade } from '../core/Transitions';
 import TwitterIcon from '../icons/twitter.svg';
 
 const EmptyTweets = styled.div`
@@ -75,32 +77,32 @@ class Tweets extends React.Component {
   render() {
     const { tweets } = this.state;
 
-    const renderNoTweet = () => {
-      return (
-        <EmptyTweets>
-          Looking for tweets...
-        </EmptyTweets>
-      )
-    }
+    const renderNoTweet = () => (
+      <EmptyTweets>
+        Looking for tweets...
+      </EmptyTweets>
+    )
 
     const renderTweets = () => {
-      return tweets.map((tweet, index) => {
-        return (
-          <TweetItem key={index}>
+      return tweets.map((tweet, index) => (
+        <Fade key={index}>
+          <TweetItem>
             <TweetIcon>
-              <img width="20" src={TwitterIcon} />
+              <img width="20" src={TwitterIcon} alt="Twitter bird" />
             </TweetIcon>
             <TweetText>
               {tweet.tweet}
             </TweetText>
           </TweetItem>
-        )
-      })
+        </Fade>
+      ))
     };
 
     return tweets.length ? (
       <TweetList>
-        {renderTweets()}
+        <TransitionGroup>
+          {renderTweets()}
+        </TransitionGroup>
       </TweetList>
     ) : renderNoTweet();
   }
