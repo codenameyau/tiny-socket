@@ -50,7 +50,7 @@ class Tweets extends React.Component {
 
     this.state = {
       ready: false,
-      tweets: [{ "tweet": "The States With The Most Gun Laws See The Fewest Gun-Related Deaths https://t.co/Oq5NDSiR3p #Investing", "followers": 460, "retweets": 0 }, { "tweet": "Crisis: Poverty Pay, Food Stamps At American Airlines https://t.co/2ta2xG9P0N #Investing", "followers": 460, "retweets": 0 }, { "tweet": "#IoT &amp; #BigData Trends in #Finance: 5 Significant Shifts [2018] https://t.co/uIN9eFhV21 by @RedPixie", "followers": 1710, "retweets": 0 }, { "tweet": "Why Charging Your Electric Car at Night Could Save the World - #Bloomberg #investorseurope #finance #news #tax… https://t.co/suhgNWRfoL", "followers": 814, "retweets": 0 }]
+      tweets: [{ "tweet": "Crisis: Poverty Pay, Food Stamps At American Airlines https://t.co/2ta2xG9P0N #Investing", "followers": 460, "retweets": 0 }, { "tweet": "Why Charging Your Electric Car at Night Could Save the World - #Bloomberg #investorseurope #finance #news #tax… https://t.co/suhgNWRfoL", "followers": 814, "retweets": 0 }].reverse()
     }
   }
   componentWillMount() {
