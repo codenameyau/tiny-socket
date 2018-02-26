@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 
 const CSSTransitionFade = styled(CSSTransition)`
-  transition: opacity 3000ms;
+  transition: opacity ${({ duration }) => duration || 1000}ms;
 
   &.fade-enter {
     opacity: 0.05;
