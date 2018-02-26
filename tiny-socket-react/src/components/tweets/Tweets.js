@@ -28,8 +28,8 @@ const TweetItem = styled.div`
   display: flex;
   align-items: center;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid #e5e5e5;
+  &:not(:first-child) {
+    border-top: 1px solid #e5e5e5;
   }
 `;
 
